@@ -13,7 +13,17 @@ def get_pokemon_stats(api_id):
     """
         Get pokemon stats from the API pokeapi
     """
-    return False
+    pokemon = get_pokemon_data(api_id)
+    
+    pokemon_stats = {
+            pokemon["stats"][0]["stat"]["name"]: pokemon["stats"][0]["base_stat"],
+            pokemon["stats"][1]["stat"]["name"]: pokemon["stats"][0]["base_stat"],
+            pokemon["stats"][2]["stat"]["name"]: pokemon["stats"][0]["base_stat"],
+            pokemon["stats"][3]["stat"]["name"]: pokemon["stats"][0]["base_stat"],
+            pokemon["stats"][4]["stat"]["name"]: pokemon["stats"][0]["base_stat"],
+            pokemon["stats"][5]["stat"]["name"]: pokemon["stats"][0]["base_stat"]
+    }
+    return pokemon_stats
 
 def get_pokemon_data(api_id):
     """
