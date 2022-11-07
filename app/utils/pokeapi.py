@@ -11,6 +11,7 @@ def get_pokemon_name(api_id):
 
 def get_pokemon_stats(api_id):
     """
+        Not Implemented
         Get pokemon stats from the API pokeapi
     """
     return False
@@ -24,6 +25,7 @@ def get_pokemon_data(api_id):
 
 def battle_pokemon(first_api_id, second_api_id):
     """
+        Not Implemented
         Do battle between 2 pokemons
     """
     premierPokemon = get_pokemon_data(first_api_id)
@@ -34,5 +36,6 @@ def battle_pokemon(first_api_id, second_api_id):
 
 def battle_compare_stats(first_pokemon_stats, second_pokemon_stats):
     """
+        Not Implemented
         Compare given stat between two pokemons
     """
