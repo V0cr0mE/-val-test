@@ -49,6 +49,3 @@ def battle_compare_stats(first_pokemon_stats, second_pokemon_stats):
         Not Implemented
         Compare given stat between two pokemons
     """
-
-
-get_pokemon_stats(200)
