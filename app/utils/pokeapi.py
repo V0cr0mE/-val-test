@@ -42,8 +42,7 @@ def battle_pokemon(first_api_id, second_api_id):
     secondPokemon = get_pokemon_data(second_api_id)
     premierPokemonData = get_pokemon_stats(first_api_id)
     secondPokemonData = get_pokemon_stats(second_api_id)
-    battle_compare_stats(premierPokemonData,secondPokemonData)
-    battle_result = 0
+    battle_result = battle_compare_stats(premierPokemonData,secondPokemonData)
     return premierPokemon if battle_result > 0 else secondPokemon if battle_result < 0 else {'winner': 'draw'}
     
 
@@ -52,5 +51,12 @@ def battle_compare_stats(first_pokemon_stats, second_pokemon_stats):
         Not Implemented
         Compare given stat between two pokemons
     """
-    if(first_pokemon_stats["hp"] > second_pokemon_stats["hp"]):
-        
+    battle_result = 0
+    for keys in first_pokemon_stats:
+        if(first_pokemon_stats[keys] > second_pokemon_stats[keys]):
+            battle_result += 1
+        elif(first_pokemon_stats[keys] == second_pokemon_stats[keys]):
+            battle_result == 0
+        else:
+            battle_result -= 1
+    return battle_result
