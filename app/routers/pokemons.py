@@ -15,3 +15,7 @@ def get_pokemons(skip: int = 0, limit: int = 100, database: Session = Depends(ge
     """
     pokemons = actions.get_pokemons(database, skip=skip, limit=limit)
     return pokemons
+
+"""
+    Not Implemented
+"""
