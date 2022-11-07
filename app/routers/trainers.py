@@ -53,7 +53,3 @@ def create_pokemon_for_trainer(
         Add a Pokemon to a trainer
     """
     return actions.add_trainer_pokemon(database=database, pokemon=pokemon, trainer_id=trainer_id)
-
-"""
-    Not Implemented
-"""

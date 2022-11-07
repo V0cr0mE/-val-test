@@ -15,7 +15,3 @@ def get_items(skip: int = 0, limit: int = 100, database: Session = Depends(get_d
     """
     items = actions.get_items(database, skip=skip, limit=limit)
     return items
-
-"""
-    Not Implemented
-"""
