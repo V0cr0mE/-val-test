@@ -44,7 +44,11 @@ def battle_pokemon(first_api_id, second_api_id):
     second_pokemon_data = get_pokemon_stats(second_api_id)
     battle_result = battle_compare_stats(
         premier_pokemon_data, second_pokemon_data)
-    return {'winner': 'right'} if battle_result > 0 else {'winner': 'left'} if battle_result < 0 else {'winner': 'draw'}
+    if battle_result > 0:
+        return {'winner': 'right'}
+    if battle_result < 0:
+        return {'winner': 'left'}
+    return {'winner': 'draw'}
 
 
 def battle_compare_stats(first_pokemon_stats, second_pokemon_stats):

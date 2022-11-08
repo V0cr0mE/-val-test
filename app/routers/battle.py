@@ -1,9 +1,7 @@
-from typing import List
-from sqlalchemy.orm import Session
-from fastapi import APIRouter,  Depends, HTTPException
-from ..utils.utils import get_db
+"""Module providingFunction printing python version."""
+from fastapi import APIRouter
 from ..utils import pokeapi
-from .. import actions, schemas
+from .. import schemas
 router = APIRouter()
 
 
@@ -18,8 +16,7 @@ def battle(pokemon_right: schemas.Pokemon, pokemon_left: schemas.Pokemon):
     if pokemon_victorieux['winner'] == "right":
         pokemon_victorieux['winner'] = str(pokemon_right.id)
         return pokemon_victorieux
-    elif pokemon_victorieux['winner'] == "left":
+    if pokemon_victorieux['winner'] == "left":
         pokemon_victorieux['winner'] = str(pokemon_left.id)
         return pokemon_victorieux
-    else:
-        return pokemon_victorieux
+    return pokemon_victorieux
