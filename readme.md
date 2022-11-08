@@ -97,4 +97,4 @@ See "htmlcov/index.html" 94%
 # Locust
     Pour ce locust, nous allons créer 1 dresseur du nom de : “Katana”, celui ci aura comme pokémon un “Katagami d’id 798”, il affrontera le dresseur "ProfesseurIssou" qui existe et qui a comme pokémon un “Dracaufeu” d’id 6
 
-![image](total_requests_per_second_1667923615.png "Graph")
+![image](stats/total_requests_per_second_1667923615.png "Graph")
