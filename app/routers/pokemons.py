@@ -23,7 +23,7 @@ def get_pokemons(skip: int = 0, limit: int = 100, database: Session = Depends(ge
     return pokemons
 
 
-@router.get("/battle/{pokemonApiID}/{pokemonApiID2}")
+@router.get("/battle/{pokemon_api_id}/{pokemon_api_id_2}")
 def pokemons_battle(pokemon_api_id: int, pokemon_api_id_2: int):
     """
         Battle between two pokemons

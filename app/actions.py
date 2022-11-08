@@ -44,12 +44,15 @@ def add_trainer_pokemon(database: Session, pokemon: schemas.PokemonCreate, train
     """
         Create a pokemon and link it to a trainer
     """
-    db_item = models.Pokemon(
-        **pokemon.dict(), name=get_pokemon_name(pokemon.api_id), trainer_id=trainer_id)
-    database.add(db_item)
-    database.commit()
-    database.refresh(db_item)
-    return db_item
+    result = get_pokemon_name(pokemon.api_id)
+    if result:
+        db_item = models.Pokemon(
+            **pokemon.dict(), name=result, trainer_id=trainer_id)
+        database.add(db_item)
+        database.commit()
+        database.refresh(db_item)
+        return db_item
+    return None
 
 
 def add_trainer_item(database: Session, item: schemas.ItemCreate, trainer_id: int):
