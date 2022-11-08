@@ -9,7 +9,7 @@ client = TestClient(app)
 
 def test_battle_draw():
     """
-    Validation of battle
+    Validation of battle in case of draw
     """
     # Arrange
     post_data = {
@@ -41,7 +41,7 @@ def test_battle_draw():
 
 def test_battle_victory_left():
     """
-    Validation of battle
+    Validation of battle in case of victory of the left pokemon
     """
     # Arrange
     post_data = {
@@ -73,7 +73,7 @@ def test_battle_victory_left():
 
 def test_battle_victory_right():
     """
-    Validation of battle
+    Validation of battle in case of victory of the right pokemon
     """
     # Arrange
     post_data = {
