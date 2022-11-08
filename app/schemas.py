@@ -80,5 +80,8 @@ class Trainer(TrainerBase):  # pylint: disable=too-few-public-methods
 #
 #  Battle
 #
-class BattleResult(BaseModel):
+
+
+class BattleResult(BaseModel):  # pylint: disable=too-few-public-methods
+    """Class representing a person"""
     winner: str
