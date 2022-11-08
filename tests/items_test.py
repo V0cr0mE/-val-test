@@ -7,7 +7,7 @@ client = TestClient(app)
 
 def test_items(mocker):
     """
-        validate in the items are returned
+        validate if the items are returned
     """
     response_data = [
         {"name":"","description":"","id":0,"trainer_id":0},

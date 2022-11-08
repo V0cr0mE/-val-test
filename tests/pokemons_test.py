@@ -7,7 +7,7 @@ client = TestClient(app)
 
 def test_pokemons(mocker):
     """
-        validate in the items are returned
+        validate if the pokemons are returned
     """
     response_data = [
         {"api_id":5,"custom_name":"","id":0,"name":"","trainer_id":0},
