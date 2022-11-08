@@ -92,7 +92,7 @@ tests\test_unit.py .......                                                      
 
 
 # Coverage
-See "htmlcov/index.html" 94%
+See "stats/result/index.html" 94%
 
 # Locust
     Pour ce locust, nous allons créer 1 dresseur du nom de : “Katana”, celui ci aura comme pokémon un “Katagami d’id 798”, il affrontera le dresseur "ProfesseurIssou" qui existe et qui a comme pokémon un “Dracaufeu” d’id 6
