@@ -38,21 +38,17 @@ def get_pokemon_data(api_id):
 
 def battle_pokemon(first_api_id, second_api_id):
     """
-        Not Implemented
         Do battle between 2 pokemons
     """
-    first_p = get_pokemon_data(first_api_id)
-    second_p = get_pokemon_data(second_api_id)
     premier_pokemon_data = get_pokemon_stats(first_api_id)
     second_pokemon_data = get_pokemon_stats(second_api_id)
     battle_result = battle_compare_stats(
         premier_pokemon_data, second_pokemon_data)
-    return first_p if battle_result > 0 else second_p if battle_result < 0 else {'winner': 'draw'}
+    return {'winner': 'right'} if battle_result > 0 else {'winner': 'left'} if battle_result < 0 else {'winner': 'draw'}
 
 
 def battle_compare_stats(first_pokemon_stats, second_pokemon_stats):
     """
-        Not Implemented
         Compare given stat between two pokemons
     """
     battle_result = 0

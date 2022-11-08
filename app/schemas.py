@@ -51,6 +51,7 @@ class Pokemon(PokemonBase):  # pylint: disable=too-few-public-methods
     class Config:  # pylint: disable=too-few-public-methods
         """Class representing a person"""
         orm_mode = True
+
 #
 #  TRAINER
 #
@@ -75,3 +76,9 @@ class Trainer(TrainerBase):  # pylint: disable=too-few-public-methods
     class Config:  # pylint: disable=too-few-public-methods
         """Class representing a person"""
         orm_mode = True
+
+#
+#  Battle
+#
+class BattleResult(BaseModel):
+    winner: str
