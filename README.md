@@ -6,6 +6,7 @@ Pierrick Bauffe -
 Thibault Balleux
 
 Ce qui a été fait :
+- route combat implémentée (il demande l'id des deux pokemons dans la base de données)
 - 8 tests unitaires
 - 3 tests mock
 - Pylint >8/10
