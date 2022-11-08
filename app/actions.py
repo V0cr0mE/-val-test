@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from . import models, schemas
 from .utils.pokeapi import get_pokemon_name
+from .utils.pokeapi import battle_pokemon
 
 
 def get_trainer(database: Session, trainer_id: int):
@@ -52,7 +53,7 @@ def add_trainer_item(database: Session, item: schemas.ItemCreate, trainer_id: in
     """
         Create an item and link it to a trainer
     """
-    db_item = models.Item(**item.dict(), owner_id=trainer_id)
+    db_item = models.Item(**item.dict(), trainer_id=trainer_id)
     database.add(db_item)
     database.commit()
     database.refresh(db_item)
@@ -71,8 +72,8 @@ def get_pokemon(database: Session, pokemon_id: int):
     """
         Find a pokemon by his id
     """
-    return database.query(models.Pokemon).filter(models.Pokemon.id == pokemon_id).first()
-
+    result =  database.query(models.Pokemon).filter(models.Pokemon.id == pokemon_id).first()
+    return result
 
 def get_pokemons(database: Session, skip: int = 0, limit: int = 100):
     """
@@ -80,3 +81,12 @@ def get_pokemons(database: Session, skip: int = 0, limit: int = 100):
         Default limit is 100
     """
     return database.query(models.Pokemon).offset(skip).limit(limit).all()
+
+def combat_pokemons(database: Session, pokemon_id_first: int, pokemon_id_second: int):
+    """
+        Find best pokemon between two
+    """
+    first_pokemon = database.query(models.Pokemon).filter(models.Pokemon.id == pokemon_id_first).first()
+    second_pokemon = database.query(models.Pokemon).filter(models.Pokemon.id == pokemon_id_second).first()
+    result = battle_pokemon(first_pokemon, second_pokemon)
+    return result

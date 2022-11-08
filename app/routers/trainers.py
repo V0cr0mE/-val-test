@@ -30,6 +30,7 @@ def get_trainer(trainer_id: int, database: Session = Depends(get_db)):
         Return trainer from his id
     """
     db_trainer = actions.get_trainer(database, trainer_id=trainer_id)
+    print(db_trainer)
     if db_trainer is None:
         raise HTTPException(status_code=404, detail="Trainer not found")
     return db_trainer
