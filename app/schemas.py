@@ -36,6 +36,7 @@ class Pokemon(PokemonBase):
 
     class Config:
         orm_mode = True
+
 #
 #  TRAINER
 #
@@ -53,3 +54,9 @@ class Trainer(TrainerBase):
 
     class Config:
         orm_mode = True
+
+#
+#  Battle
+#
+class BattleResult(BaseModel):
+    winner: str
