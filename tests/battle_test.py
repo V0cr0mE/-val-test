@@ -31,7 +31,7 @@ def test_battle_draw():
     response_data = {"winner": "draw"}
     # Act
     response = client.post(
-        "/battle/",
+        "/battle/1/2",
         headers={'accept': 'application/json', 'Content-Type': 'application/json'},
         data= json.dumps(post_data)
         )
@@ -63,7 +63,7 @@ def test_battle_victory_left():
     response_data = {"winner": "1"}
     # Act
     response = client.post(
-        "/battle/",
+        "/battle/1/2",
         headers={'accept': 'application/json', 'Content-Type': 'application/json'},
         data= json.dumps(post_data)
         )
@@ -95,7 +95,7 @@ def test_battle_victory_right():
     response_data = {"winner": "2"}
     # Act
     response = client.post(
-        "/battle/",
+        "/battle/1/2",
         headers={'accept': 'application/json', 'Content-Type': 'application/json'},
         data= json.dumps(post_data)
         )
