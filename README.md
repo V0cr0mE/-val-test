@@ -15,3 +15,5 @@ Travail réalisé :
 
 Autres informations :
     - Coverage = 9O %
+    - Score PyLint = 8.10/10
+    - Locust scénario = 2 nouveaux joueurs créent leur compte, obtienent leur premier pokemon puis s'affrontent avec ces derniers.
