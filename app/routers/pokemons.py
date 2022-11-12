@@ -28,6 +28,6 @@ def get_battle_pokemon(first_pokemon_id: int, second_pokemon_id: int, database: 
     pokemon_1 = get_pokemon(database, pokemon_id=first_pokemon_id)
     pokemon_2 = get_pokemon(database, pokemon_id=second_pokemon_id)
     
-    battle = battle_pokemon(pokemon_1, pokemon_2)
+    battle = battle_pokemon(pokemon_1.api_id, pokemon_2.api_id)
     
     return battle
