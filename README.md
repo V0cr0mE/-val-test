@@ -10,8 +10,8 @@ Travail réalisé :
     - fonction modifiée : get_trainer_by_name()
     - fonction crée (groupe de 4) : get_three_random_pokemon()
     - Tests unitaire écrits : 7 --> voir test_unit.py
-    - Tests mock écrits : 2 --> voir test_mick.py
+    - Tests mock écrits : 5 --> voir test_mick.py
     
 
 Autres informations :
-    - Coverage = 86 %
+    - Coverage = 9O %

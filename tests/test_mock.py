@@ -72,26 +72,35 @@ def test_get_three_random_pokemon(mocker):
     assert response.status_code == 200
     
 
-# # Test 4
-# # Check
-# def test_none_pokemon_for_trainer(mocker):
-#     """
-#         Creation d'un pokemon inexistant
-#     """
-#     mocker.patch(
-#         "app.utils.pokeapi.get_pokemon_name", 
-#         return_value=None
-#         )
+# Test 4
+# Check
+def test_none_pokemon_for_trainer(mocker):
+    """
+        Creation d'un pokemon inexistant
+    """
+    mocker.patch(
+        "app.utils.pokeapi.get_pokemon_name", 
+        return_value={"name" : "pikachu"}
+        )
 
-#     response = client.post("/trainers/1/pokemon/", json={"api_id": 0,"custom_name": "string"})
-#     assert response.status_code == 500
-#     assert response.json() == {"detail": "Pokemon not found"}
+    response = client.post("/trainers/1/pokemon/", json={"api_id": 25,"custom_name": "tchutchu"})
+    assert response.status_code == 200
+    assert response.json() == {"api_id": 25,"custom_name": "tchutchu","id": 2,"name": "pikachu","trainer_id": 1}
 
 
 # Test 5
-# def test5(mocker):
-#     pass
-#     mocker.patch(
-#         "",
-#         return_value = ""
-#     )
+# Create a pokemon for a trainer
+def test_create_pokemon_for_trainer(mocker):
+    """
+        Creation d'un pokemon pour un trainer
+    """
+    mocker.patch(
+        "app.utils.pokeapi.get_pokemon_data", 
+        return_value={"name": "charizard", "id": 6}
+        )
+
+    nbPokemon = len(client.get("/pokemons").json())
+    
+    response = client.post("/trainers/3/pokemon/", json={"api_id": 6, "custom_name": "Dracofeu"})
+    assert response.status_code == 200
+    assert response.json() == {"api_id": 6, "custom_name": "Dracofeu", "id": nbPokemon+1, "name": "charizard", "trainer_id": 3}
