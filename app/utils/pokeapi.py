@@ -24,25 +24,26 @@ def get_pokemon_data(api_id):
     return requests.get(f"{base_url}/pokemon/{api_id}", timeout=10).json()
 
 
-def battle_pokemon(first_api_id, second_api_id):
+def battle_pokemon(pokemon_1, pokemon_2):
     """
         Do battle between 2 pokemons
         return the name of the pokemon winner
     """
-    premierPokemon = get_pokemon_data(first_api_id)
-    secondPokemon = get_pokemon_data(second_api_id)
-    pokemon_1 = {"name": premierPokemon["forms"][0]['name'], "health": premierPokemon['stats'][0]['base_stat'],
-                 "attack": premierPokemon['stats'][1]['base_stat']}
-    pokemon_2 = {"name": secondPokemon["forms"][0]['name'], "health": secondPokemon['stats'][0]['base_stat'],
-                 "attack": secondPokemon['stats'][1]['base_stat']}
+    premier_pokemon = get_pokemon_data(pokemon_1.api_id)
+    second_pokemon = get_pokemon_data(pokemon_2.api_id)
 
-    while True:
-        pokemon_1['health'] = pokemon_1['health'] - pokemon_2['attack']
-        if (pokemon_1['health'] <= 0):
-            return pokemon_2['name']
-        pokemon_2['health'] = pokemon_2['health'] - pokemon_1['attack']
-        if (pokemon_2['health'] <= 0):
-            return pokemon_1['name']
+    compteur_1 = 0
+    compteur_2 = 0
+
+    for i in range(min(len(premier_pokemon['stats']), len(second_pokemon['stats']))):
+        if(premier_pokemon['stats'][i]['base_stat']>second_pokemon['stats'][i]['base_stat']):
+            compteur_1+=1
+        elif (premier_pokemon['stats'][i]['base_stat']==second_pokemon['stats'][i]['base_stat']):
+            pass
+        else:
+            compteur_2+=1
+
+    return premier_pokemon["forms"][0]['name'] if compteur_1>=compteur_2 else second_pokemon["forms"][0]['name']
 
 
 def battle_compare_stats(first_pokemon_stats, second_pokemon_stats):
