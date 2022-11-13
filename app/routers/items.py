@@ -1,9 +1,14 @@
-from typing import List
-from sqlalchemy.orm import Session
-from fastapi import APIRouter,  Depends
-from app.utils.utils import get_db
-from app import actions, schemas
+"""
+Get items
+"""
 
+from typing import List
+
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
+
+from app import actions, schemas
+from app.utils.utils import get_db
 
 router = APIRouter()
 

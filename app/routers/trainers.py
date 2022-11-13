@@ -1,8 +1,15 @@
+"""
+Trainers db
+"""
+
 from typing import List
+
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from fastapi import APIRouter,  Depends, HTTPException
-from app.utils.utils import get_db
+
 from app import actions, schemas
+from app.utils.utils import get_db
+
 router = APIRouter()
 
 
