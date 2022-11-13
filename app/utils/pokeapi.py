@@ -1,6 +1,6 @@
 import requests
 
-base_url = "https://pokeapi.co/api/v2"
+BASE_URL = "https://pokeapi.co/api/v2"
 
 
 def get_pokemon_name(api_id):
@@ -17,12 +17,18 @@ def get_pokemon_stats(api_id):
     pokemon_data = get_pokemon_data(api_id)
 
     pokemon_stats = {
-        pokemon_data["stats"][0]["stat"]["name"]: pokemon_data["stats"][0]["base_stat"],    #HP
-        pokemon_data["stats"][1]["stat"]["name"]: pokemon_data["stats"][0]["base_stat"],    #Attack
-        pokemon_data["stats"][2]["stat"]["name"]: pokemon_data["stats"][0]["base_stat"],    #Defense
-        pokemon_data["stats"][3]["stat"]["name"]: pokemon_data["stats"][0]["base_stat"],    #Special attack
-        pokemon_data["stats"][4]["stat"]["name"]: pokemon_data["stats"][0]["base_stat"],    #Special defense
-        pokemon_data["stats"][5]["stat"]["name"]: pokemon_data["stats"][0]["base_stat"]     #Speed
+        pokemon_data["stats"][0]["stat"]["name"]:
+        pokemon_data["stats"][0]["base_stat"],    #HP
+        pokemon_data["stats"][1]["stat"]["name"]:
+        pokemon_data["stats"][0]["base_stat"],    #Attack
+        pokemon_data["stats"][2]["stat"]["name"]:
+        pokemon_data["stats"][0]["base_stat"],    #Defense
+        pokemon_data["stats"][3]["stat"]["name"]:
+        pokemon_data["stats"][0]["base_stat"],    #Special attack
+        pokemon_data["stats"][4]["stat"]["name"]:
+        pokemon_data["stats"][0]["base_stat"],    #Special defense
+        pokemon_data["stats"][5]["stat"]["name"]:
+        pokemon_data["stats"][0]["base_stat"]     #Speed
     }
 
     return pokemon_stats
@@ -31,7 +37,7 @@ def get_pokemon_data(api_id):
     """
         Get data of pokemon name from the API pokeapi
     """
-    return requests.get(f"{base_url}/pokemon/{api_id}", timeout=10).json()
+    return requests.get(f"{BASE_URL}/pokemon/{api_id}", timeout=10).json()
 
 
 def battle_pokemon(first_api_id, second_api_id):
@@ -39,12 +45,12 @@ def battle_pokemon(first_api_id, second_api_id):
         Do battle between 2 pokemons
     """
 
-    firstPokemon = get_pokemon_stats(first_api_id)
-    secondPokemon = get_pokemon_stats(second_api_id)
-    battle_result = battle_compare_stats(firstPokemon, secondPokemon)
+    first_pokemon = get_pokemon_stats(first_api_id)
+    second_pokemon = get_pokemon_stats(second_api_id)
+    battle_result = battle_compare_stats(first_pokemon, second_pokemon)
 
-    return ({'winner' : firstPokemon} if battle_result > 0
-    else {'winner' : secondPokemon} if battle_result < 0
+    return ({'winner' : first_pokemon} if battle_result > 0
+    else {'winner' : second_pokemon} if battle_result < 0
     else {'winner' : 'draw'})
 
 
@@ -60,5 +66,5 @@ def battle_compare_stats(pokemon_stats_1, pokemon_stats_2):
         elif pokemon_stats_1[stat] < pokemon_stats_2[stat]:
             result -= 1
         else:
-            result = result
+            continue
     return result

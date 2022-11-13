@@ -18,7 +18,7 @@ def get_pokemons(skip: int = 0, limit: int = 100, database: Session = Depends(ge
     return pokemons
 
 @router.post("/", response_model = List[schemas.Battle])
-def battle_two_pokemons(pokemon1: schemas.Pokemon, pokemon2: schemas.Pokemon, poke1_id:int, poke2_id:int):
+def duel_pokemons(pokemon1: schemas.Pokemon, pokemon2: schemas.Pokemon, poke1_id:int, poke2_id:int):
     """
         Does a battle between 2 pokemons
     """
@@ -26,5 +26,5 @@ def battle_two_pokemons(pokemon1: schemas.Pokemon, pokemon2: schemas.Pokemon, po
     if winner['winner'] == poke1_id:
         winner['winner'] = str(poke1_id)
     elif winner['winner'] == poke2_id:
-        winner['winner'] == str(poke2_id)
+        winner['winner'] = str(poke2_id)
     return winner
