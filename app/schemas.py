@@ -53,3 +53,9 @@ class Trainer(TrainerBase):
 
     class Config:
         orm_mode = True
+
+class Battle(BaseModel):
+    """
+        Initialized a simple battle class for result purposes
+    """
+    winner:str

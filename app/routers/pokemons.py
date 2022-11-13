@@ -17,10 +17,14 @@ def get_pokemons(skip: int = 0, limit: int = 100, database: Session = Depends(ge
     pokemons = actions.get_pokemons(database, skip=skip, limit=limit)
     return pokemons
 
-@router.post("/{pokemon_id1}&{pokemon_id2}", response_model=List[schemas.Pokemon])
-def battle_two_pokemons(pokemon_id1: int, pokemon_id2: int, pokemon1: schemas.Pokemon, pokemon2: schemas.Pokemon):
+@router.post("/", response_model = List[schemas.Battle])
+def battle_two_pokemons(pokemon1: schemas.Pokemon, pokemon2: schemas.Pokemon, poke1_id:int, poke2_id:int):
     """
-        Does a battle between two pokemons
+        Does a battle between 2 pokemons
     """
-    winner = battle_pokemon(pokemon_id1, pokemon_id2)
+    winner = battle_pokemon(pokemon1.api_id, pokemon2.api_id)
+    if winner['winner'] == poke1_id:
+        winner['winner'] = str(poke1_id)
+    elif winner['winner'] == poke2_id:
+        winner['winner'] == str(poke2_id)
     return winner
