@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from app.routers import trainers, pokemons, items
-
+from app.utils.pokeapi import get_pokemon_stats
 
 app = FastAPI()
 
