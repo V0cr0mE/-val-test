@@ -15,3 +15,4 @@
 Pour ce locust, nous allons créer 1 dresseur du nom de : “titouen”, celui ci aura comme pokémon un “titoune d’id 121”, il affrontera le dresseur "balou" qui existe et qui a comme pokémon un "herbizarre" d’id 2
 
 ![Locust](/src/graph.png "Locust")
+ 
