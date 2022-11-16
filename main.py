@@ -4,7 +4,7 @@ from app.routers import trainers, pokemons, items
 
 app = FastAPI()
 
-
+#app.get("/")
 
 app.include_router(trainers.router,
                    prefix="/trainers")
