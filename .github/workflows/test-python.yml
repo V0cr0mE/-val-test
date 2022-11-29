@@ -2,7 +2,9 @@ name : Python CI/CD
 
 on:
   workflow_dispatch:
-  push: ['master', 'main', 'develop']
+  push:
+    branches:
+      - main
 
 jobs:
   tests:
