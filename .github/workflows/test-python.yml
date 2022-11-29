@@ -1,0 +1,15 @@
+name : Python CI/CD
+
+on:
+  workflow_dispatch:
+  push: ['master', 'main', 'develop']
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Print folder
+        run:
+          ls
