@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from . import models, schemas
 from .utils.pokeapi import get_pokemon_name
-
+from .utils.pokeapi import get_pokemon_stats
 
 def get_trainer(database: Session, trainer_id: int):
     """
@@ -48,6 +48,7 @@ def add_trainer_pokemon(database: Session, pokemon: schemas.PokemonCreate, train
     return db_item
 
 
+
 def add_trainer_item(database: Session, item: schemas.ItemCreate, trainer_id: int):
     """
         Create an item and link it to a trainer
@@ -80,3 +81,4 @@ def get_pokemons(database: Session, skip: int = 0, limit: int = 100):
         Default limit is 100
     """
     return database.query(models.Pokemon).offset(skip).limit(limit).all()
+
