@@ -1,0 +1,87 @@
+= GROUPE 3
+
+== Game Freak  
+*Louis Van Elsuve, Axel Mairesse, Archibald Praingy*
+
+---
+
+## Documentation des Tests  
+
+- **Cas de tests** :  
+  Les cas de tests ont été créés dans un Google Sheet nommé _'cas de tests pokemon'_ (deuxième feuille), on peut les retrouver en annexe dans le plan de tests.
+
+- **Plan de tests** :  
+  Le plan de tests est disponible dans ce dépôt. Il contient toutes les informations nécessaires pour effectuer les tests avec précision.
+
+---
+
+## Description du Code  
+
+### Objectif  
+L'objectif est de développer un système permettant à deux Pokémon de se combattre.  
+Le combat consiste à comparer chaque statistique des deux Pokémon une par une :  
+- _Santé (Health) vs Santé_
+- _Attaque (Attack) vs Attaque_
+- Etc.
+
+Le Pokémon ayant un plus grand nombre de statistiques supérieures est déclaré vainqueur.
+
+---
+
+### Fonctionnalités Implémentées  
+
+#### Fonction `battle_pokemon`
+Cette fonction initie un combat entre deux Pokémon.  
+
+Elle :
+
+1. Récupère les données des Pokémon à partir de leur identifiant.
+
+2. Compare leurs statistiques à l'aide de la fonction `battle_compare_stats`.
+
+3. Retourne le résultat du combat, comprenant le nom du vainqueur et du perdant.
+
+#### Fonction `battle_compare_stats`
+Cette fonction compare les statistiques des deux Pokémon.  
+
+Elle :
+
+1. Parcourt chaque statistique des deux Pokémon.
+
+2. Attribue un point au Pokémon ayant la statistique la plus élevée.
+
+3. Retourne un score final indiquant le vainqueur.
+
+---
+
+### Exemple de Code  
+
+```python
+def battle_pokemon(first_api_id, second_api_id):
+
+    premierPokemon = get_pokemon_data(first_api_id)
+    secondPokemon = get_pokemon_data(second_api_id)
+
+    first_pokemon_stats = premierPokemon['stats']
+    second_pokemon_stats = secondPokemon['stats']
+
+    battle_result = battle_compare_stats(first_pokemon_stats, second_pokemon_stats)
+
+    if battle_result > 0:
+        return {'winner': premierPokemon['name'], 'loser': secondPokemon['name']}
+    elif battle_result < 0:
+        return {'winner': secondPokemon['name'], 'loser': premierPokemon['name']}
+    else:
+        return {'winner': 'draw', 'message': 'Both Pokémon have equal power'}
+
+def battle_compare_stats(first_pokemon_stats, second_pokemon_stats):
+
+    score = 0
+
+    for stat1, stat2 in zip(first_pokemon_stats, second_pokemon_stats):
+        if stat1['base_stat'] > stat2['base_stat']:
+            score += 1
+        elif stat1['base_stat'] < stat2['base_stat']:
+            score -= 1
+
+    return score
